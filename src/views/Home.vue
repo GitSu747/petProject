@@ -14,14 +14,14 @@
           <b-form-input id="input-1"
                         v-model="form.firstName"
                         type="text"
-                        placeholder="Enter email"
+                        placeholder="Enter Name"
                         required></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-2" label="Your Type:" label-for="input-2">
+        <b-form-group id="input-group-2" label="Pet Type:" label-for="input-2">
           <b-form-input id="input-2"
                         v-model="form.type"
-                        placeholder="Enter Type"
+                        placeholder="Enter Breed"
                         required></b-form-input>
         </b-form-group>
 
@@ -37,12 +37,12 @@
           <b-form-select id="input-3"
                          v-model="form.species"
                          :options="speciesData"
-                         placeholder="Enter age"
+                         placeholder="Choose a Species"
                          required></b-form-select>
         </b-form-group>
 
         <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <!--<b-button type="reset" variant="danger">Reset</b-button>-->
       </b-form>
       <!--<b-card class="mt-3" header="Form Data Result">
       <pre class="m-0">{{ form }}</pre>
@@ -58,7 +58,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   data () {
     return {
-      showForm: true,
+      showForm: false,
       form: {
         firstName: '',
         age: 0,

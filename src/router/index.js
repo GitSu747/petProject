@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Pets from '../views/Pets.vue'
+import Dogs from '../views/Dogs.vue'
+import Cats from '../views/Cats.vue'
 
 Vue.use(VueRouter)
 
@@ -17,6 +20,21 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/pets/:species/:id',
+    name: 'Pets',
+    component: Pets
+  },
+  {
+    path: '/dogs',
+    name: 'Dogs',
+    component: Dogs
+  },
+  {
+    path: '/cats',
+    name: 'Cats',
+    component: Cats
   }
 ]
 

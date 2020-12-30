@@ -1,18 +1,102 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    Home Page
+    Total count of pets : {{getterPetCount}}
+    <br />
+    <button @click="toggleFormVisibility" class="btn btn-primary">ADD PET</button>
+
+    <div id="formDiv" v-if="showForm">
+      <b-form @submit.prevent="handleSubmit">
+        <b-form-group id="input-group-1"
+                      label="First Name"
+                      label-for="firstName"
+                      description="Please enter your first name">
+          <b-form-input id="input-1"
+                        v-model="form.firstName"
+                        type="text"
+                        placeholder="Enter email"
+                        required></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="input-group-2" label="Your Type:" label-for="input-2">
+          <b-form-input id="input-2"
+                        v-model="form.type"
+                        placeholder="Enter Type"
+                        required></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="input-group-3" label="Age:" label-for="input-3">
+          <b-form-input id="input-3"
+                        v-model="form.age"
+                        type="number"
+                        placeholder="Enter age"
+                        required></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="input-group-3" label="Species:" label-for="input-3">
+          <b-form-select id="input-3"
+                         v-model="form.species"
+                         :options="speciesData"
+                         placeholder="Enter age"
+                         required></b-form-select>
+        </b-form-group>
+
+        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="reset" variant="danger">Reset</b-button>
+      </b-form>
+      <!--<b-card class="mt-3" header="Form Data Result">
+      <pre class="m-0">{{ form }}</pre>
+    </b-card>-->
+    </div>
+
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      showForm: true,
+      form: {
+        firstName: '',
+        age: 0,
+        type: '',
+        species: null
+      },
+      speciesData: ['cats', 'dogs']
+    }
+  },
+  methods: {
+    ...mapActions(
+      ['addPet']),
+    toggleFormVisibility () {
+      this.showForm = !this.showForm
+    },
+    handleSubmit () {
+      const { species, firstName, age, type } = this.form
+      var payload = {
+        species,
+        pet: {
+          firstName,
+          age,
+          type
+        }
+      }
+      this.addPet(payload)
+      this.form = {
+        firstName: '',
+        age: 0,
+        type: '',
+        species: null
+      }
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getterPetCount'
+    ])
   }
 }
 </script>

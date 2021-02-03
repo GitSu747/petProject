@@ -5,8 +5,6 @@
 </template>
 
 <script>
-/// import dogs from '@/data/dogsData'
-// import dogsDataVue from '@/data/dogsData1.js'
 import { mapState } from 'vuex'
 import PetTable from '@/components/PetTable'
 

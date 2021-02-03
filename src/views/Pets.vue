@@ -25,10 +25,8 @@ export default {
   },
   mounted () {
     this.animal = this[this.$route.params.species][this.$route.params.id]
-    // this.animal = this.animal[this.$route.params.id]
     return this.animal
   }
-
 }
 
 </script>

@@ -5,8 +5,6 @@
 </template>
 
 <script>
-
-// import cats from '@/data/catsData.vue'
 import { mapState } from 'vuex'
 import PetTable from '@/components/PetTable.vue'
 export default {

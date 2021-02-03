@@ -3,7 +3,7 @@ export default {
   // addPet : (context, pet) => {
   //  context.commit('appendPet', pet)
   // }
-  // Using PAYLOAD since this will be and object with name and pet details seperately
+  // Using PAYLOAD since this will be an object with name and pet details seperately
   addPet: ({ commit }, payload) => {
     commit('appendPet', payload)
   }

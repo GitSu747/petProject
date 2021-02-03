@@ -1,3 +1,5 @@
-.home-view-container h1 {
-	color: lawngreen
+@import './base/baseVariables';
+
+.home-view-container h1{
+	color: $green;
 	}
